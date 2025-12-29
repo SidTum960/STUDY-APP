@@ -13,7 +13,7 @@ function VistaSemanal() {
     
     const inicio = new Date(fechaInicio);
     const fin = new Date(inicio);
-    fin.setDate(fin.getDate() + 6); // 7 días
+    fin.setDate(fin.getDate() + 6); // 6 días adicionales para completar 7 días totales
 
     try {
       const response = await getHorariosRango(

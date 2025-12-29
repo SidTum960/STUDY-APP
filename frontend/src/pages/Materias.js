@@ -49,7 +49,14 @@ function Materias() {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm('¿Estás seguro de eliminar esta materia?')) {
+    const confirmar = window.confirm(
+      '¿Estás seguro de eliminar esta materia?\n\n' +
+      'Se eliminarán también:\n' +
+      '- Todas las evaluaciones asociadas\n' +
+      '- Referencias en horarios generados'
+    );
+    
+    if (confirmar) {
       try {
         await deleteMateria(id);
         cargarMaterias();

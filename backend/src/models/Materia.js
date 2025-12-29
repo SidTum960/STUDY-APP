@@ -23,15 +23,29 @@ const evaluacionSchema = new mongoose.Schema({
 const horarioClaseSchema = new mongoose.Schema({
   dia_semana: {
     type: Number, // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
-    required: true
+    required: true,
+    min: 0,
+    max: 6
   },
   hora_inicio: {
     type: String, // Formato "HH:MM"
-    required: true
+    required: true,
+    validate: {
+      validator: function(v) {
+        return /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.test(v);
+      },
+      message: props => `${props.value} no es un formato de hora válido (HH:MM)!`
+    }
   },
   hora_fin: {
     type: String,
-    required: true
+    required: true,
+    validate: {
+      validator: function(v) {
+        return /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.test(v);
+      },
+      message: props => `${props.value} no es un formato de hora válido (HH:MM)!`
+    }
   }
 });
 

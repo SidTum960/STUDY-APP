@@ -23,10 +23,10 @@ export const createDiaEspecial = (data) => api.post('/dias-especiales', data);
 export const deleteDiaEspecial = (id) => api.delete(`/dias-especiales/${id}`);
 
 // Horarios
-export const generarHorario = (fecha) => api.post(`/generar-horario/${fecha}`);
-export const getHorario = (fecha) => api.get(`/horario/${fecha}`);
+export const generarHorario = (fecha) => api.post(`/generar-horario/${encodeURIComponent(fecha)}`);
+export const getHorario = (fecha) => api.get(`/horario/${encodeURIComponent(fecha)}`);
 export const getHorariosRango = (fechaInicio, fechaFin) => 
-  api.get(`/horarios?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
+  api.get(`/horarios?fechaInicio=${encodeURIComponent(fechaInicio)}&fechaFin=${encodeURIComponent(fechaFin)}`);
 
 // Usuario
 export const getUsuario = () => api.get('/user');

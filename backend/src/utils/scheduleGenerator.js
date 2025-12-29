@@ -105,7 +105,7 @@ function asignarHoraBlanca(disponibles, prioridadesOrdenadas, clasesHoy, fecha) 
   mañana.setDate(mañana.getDate() + 1);
   
   for (const { materia, prioridad_final } of prioridadesOrdenadas) {
-    const evaluacionMañana = materia.evaluaciones.find(e => {
+    const evaluacionTomorrow = materia.evaluaciones.find(e => {
       const evalDate = new Date(e.fecha);
       return e.activa && 
              evalDate.getFullYear() === mañana.getFullYear() &&
@@ -113,7 +113,7 @@ function asignarHoraBlanca(disponibles, prioridadesOrdenadas, clasesHoy, fecha) 
              evalDate.getDate() === mañana.getDate();
     });
     
-    if (evaluacionMañana) {
+    if (evaluacionTomorrow) {
       const bloque = disponibles.find(d => d.duracion >= 60);
       if (bloque) {
         return {
